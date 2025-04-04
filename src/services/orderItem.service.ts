@@ -2,8 +2,8 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient()
 
-interface OrderItemData{
-    id: string;
+interface OrderItemData {
+    id?: string;
     orderId: string;
     quantity: number;
     price: number;
@@ -17,10 +17,10 @@ export const getAllOrderItems = async () => {
     return await prisma.orderItem.findMany()
 }
 
-export const addOrderItem = async ({orderId, quantity, price, foodId, name, subtotal}: OrderItemData) => {
-    try{
+export const addOrderItem = async ({ orderId, quantity, price, foodId, name, subtotal }: OrderItemData) => {
+    try {
         return await prisma.orderItem.create({
-            data:{
+            data: {
                 orderId,
                 quantity,
                 price,
@@ -29,31 +29,31 @@ export const addOrderItem = async ({orderId, quantity, price, foodId, name, subt
                 subtotal
             }
         })
-    }catch(error){
+    } catch (error) {
         console.error(error);
     }
 }
 
-export const deleteOrderItem = async ( id:string) => {
-    try{
+export const deleteOrderItem = async (id: string) => {
+    try {
         return await prisma.orderItem.delete({
-            where:{
+            where: {
                 id
             }
         })
-    }catch( error){
+    } catch (error) {
         console.error(error)
     }
-    
+
 }
 
-export const updateOrderItem = async ({ id, orderId, foodId, name, price, quantity, subtotal} : OrderItemData) =>{
-    try{
+export const updateOrderItem = async ({ id, orderId, foodId, name, price, quantity, subtotal }: OrderItemData) => {
+    try {
         return await prisma.orderItem.update({
-            where:{
+            where: {
                 id
             },
-            data:{
+            data: {
                 orderId,
                 foodId,
                 name,
@@ -62,7 +62,7 @@ export const updateOrderItem = async ({ id, orderId, foodId, name, price, quanti
                 subtotal
             }
         })
-    }catch(error){
+    } catch (error) {
         console.error(error)
     }
 }
