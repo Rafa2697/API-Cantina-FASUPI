@@ -1,23 +1,20 @@
+import {getFoods} from '../controllers/food.controller'
 
+describe ("Teste para food.controller", () => {
+    test("testar função getFoods", async () => {
+        const req = {
+            params: {},
+            body: {}
+        } as any
 
-function sum(a:number, b:number){
-    return a + b;
-}
+        const res = {
+            json: jest.fn(),
+            status: jest.fn().mockReturnThis()
+        } as any
 
-describe ("teste inicial", () => {
-    it("Primeiro teste unitario", () => {
-        const firstArgument = 1;
-        const secondArgument = 2;
+       await getFoods(req, res)
 
-        let result = sum(firstArgument, secondArgument);
-        expect(result).toBe(firstArgument + secondArgument);
-    })
-    it("segundo teste unitario", () => {
-        const firstArgument = 1;
-        const secondArgument = 2;
-
-        let result = sum(firstArgument, secondArgument);
-        expect(result).toBe(firstArgument + secondArgument + 1);
+        expect(res.json).toHaveBeenCalled()
     })
 })
 
