@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {getCategories, createCategory} from "../controllers/foodCategory.controller.ts";
 
+
 const router = Router();
 
 router.get("/categories", getCategories);

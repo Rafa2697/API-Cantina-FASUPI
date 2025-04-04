@@ -82,13 +82,13 @@ model Order {
 }
 
 model OrderItem {
-  id       String  @id @default(uuid())
-  orderId  String
-  quantity Int
-  price    Decimal
-  foodId   String
-  name     String
-  subtotal Decimal
+  id       String  @id @default(uuid()) // ID único do item no pedido
+  orderId  String // Chave estrangeira para o pedido
+  quantity Int // Quantidade do item
+  price    Decimal // Preço do item no momento do pedido
+  foodId   String // ID do alimento
+  name     String // Nome do alimento
+  subtotal Decimal // price * quantity
   order    Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }
 
