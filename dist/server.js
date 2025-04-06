@@ -5,10 +5,12 @@ import routeFood from './routes/food.routes';
 import routeCategory from './routes/category.routes';
 import routerOrder from './routes/order.routes';
 import routerOrderItem from './routes/orderItem.routes';
+import rootRouter from './routes/root.routes';
 const app = express();
 const PORT = 3000;
 dotenv.config(); // Carrega as variáveis de ambiente do .env
 app.use(express.json()); // Middleware para analisar JSON no corpo das requisições
+app.use(rootRouter); // Usando as rotas definidas no arquivo root.routes.ts
 app.use(routeUser); // Usando as rotas definidas no arquivo user.routes.ts
 app.use(routeFood);
 app.use(routeCategory); // Usando as rotas definidas no arquivo category.routes.ts
