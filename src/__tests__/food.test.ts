@@ -1,6 +1,6 @@
-import {getFoods, createFood} from '../controllers/food.controller'
+import { getFoods, createFood } from '../controllers/food.controller'
 
-describe ("Teste para food.controller", () => {
+describe("Teste para food.controller", () => {
     test("testar função getFoods", async () => {
         const req = {
             params: {},
@@ -12,7 +12,7 @@ describe ("Teste para food.controller", () => {
             status: jest.fn().mockReturnThis()
         } as any
 
-       await getFoods(req, res)
+        await getFoods(req, res)
 
         expect(res.json).toHaveBeenCalled()
     })
@@ -27,7 +27,7 @@ describe ("Teste para food.controller", () => {
             status: jest.fn().mockReturnThis()
         } as any
 
-       await createFood(req, res)
+        await createFood(req, res)
 
         expect(res.json).toHaveBeenCalled()
     })
