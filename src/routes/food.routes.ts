@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getFoods, createFood, removeFood, editFood } from "../controllers/food.controller.ts";
+import { getFoods, createFood, removeFood, editFood } from "../controllers/food.controller";
 
 const router = Router();
 

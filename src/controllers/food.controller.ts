@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getAllFoods, addFood, deleteFood, updateFood } from "../services/food.service.ts";
+import { getAllFoods, addFood, deleteFood, updateFood } from "../services/food.service";
 
 export const getFoods = async (req: Request, res: Response) => {
     try {

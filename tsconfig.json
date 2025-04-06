@@ -18,7 +18,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "noEmit": true,             // Mantido como true se você estiver usando ts-node ou similar
+    "noEmit": false,             // Mantido como true se você estiver usando ts-node ou similar
 
     /* Configurações adicionais recomendadas */
     "resolveJsonModule": true,  // Permite importar arquivos JSON

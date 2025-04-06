@@ -1,10 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import routeUser from './src/routes/user.routes.ts';
-import routeFood from './src/routes/food.routes.ts';
-import routeCategory from './src/routes/category.routes.ts';
-import routerOrder from './src/routes/order.routes.ts';
-import routerOrderItem from './src/routes/orderItem.routes.ts';
+import routeUser from './routes/user.routes';
+import routeFood from './routes/food.routes';
+import routeCategory from './routes/category.routes';
+import routerOrder from './routes/order.routes';
+import routerOrderItem from './routes/orderItem.routes';
 
 const app = express();
 const PORT =  3000;

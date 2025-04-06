@@ -4,9 +4,9 @@
   "type": "module",
   "main": "server.ts",
   "scripts": {
-    "start": "tsx server.ts",
-    "dev": "tsx watch server.ts",
-    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
+    "build": "tsc && cp .env ./dist/",
     "test": "jest --passWithNoTests"
   },
   "keywords": [],
