@@ -9,7 +9,7 @@
     "rootDir": "./src",
 
     /* Configurações importantes para ES Modules */
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": false,
     "moduleDetection": "force",  // Força todos os arquivos a serem tratados como módulos
 
     /* Outras configurações importantes */
