@@ -20,8 +20,8 @@ app.use(routeCategory); // Usando as rotas definidas no arquivo category.routes.
 app.use(routerOrder); // Usando as rotas definidas no arquivo order.routes.ts
 app.use(routerOrderItem); // Usando as rotas definidas no arquivo orderItem.routes.ts
 
-app.listen(PORT, () => {
-    console.log(`servidor rodando na porta ${PORT}`);
-})
+// app.listen(PORT, () => {
+//     console.log(`servidor rodando na porta ${PORT}`);
+// })
 
 export default app; // Exporta o app para ser usado em testes ou outros módulos
