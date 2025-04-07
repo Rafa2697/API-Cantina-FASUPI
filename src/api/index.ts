@@ -23,5 +23,7 @@ app.use(routerOrderItem); // Usando as rotas definidas no arquivo orderItem.rout
 // app.listen(PORT, () => {
 //     console.log(`servidor rodando na porta ${PORT}`);
 // })
-
+app.get('/test', (req, res) => {
+    res.send('Teste funcionando!');
+  });
 export default app; // Exporta o app para ser usado em testes ou outros módulos

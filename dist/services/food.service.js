@@ -1,6 +1,12 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
-export const getAllFoods = async () => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getAllFoods = void 0;
+exports.addFood = addFood;
+exports.deleteFood = deleteFood;
+exports.updateFood = updateFood;
+const client_1 = require("@prisma/client");
+const prisma = new client_1.PrismaClient();
+const getAllFoods = async () => {
     return await prisma.menuItem.findMany({
         orderBy: {
             createdAt: 'asc'
@@ -10,7 +16,8 @@ export const getAllFoods = async () => {
         }
     });
 };
-export async function addFood(name, description, price, imagemURL, categoryId, isAvailable) {
+exports.getAllFoods = getAllFoods;
+async function addFood(name, description, price, imagemURL, categoryId, isAvailable) {
     try {
         return await prisma.menuItem.create({
             data: {
@@ -27,7 +34,7 @@ export async function addFood(name, description, price, imagemURL, categoryId, i
         console.error(error);
     }
 }
-export async function deleteFood(id) {
+async function deleteFood(id) {
     try {
         return await prisma.menuItem.delete({
             where: {
@@ -39,7 +46,7 @@ export async function deleteFood(id) {
         console.error(error);
     }
 }
-export async function updateFood({ id, name, description, price, imagemURL, categoryId, isAvailable }) {
+async function updateFood({ id, name, description, price, imagemURL, categoryId, isAvailable }) {
     try {
         return await prisma.menuItem.update({
             where: {

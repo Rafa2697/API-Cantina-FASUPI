@@ -1,17 +1,21 @@
-import { getAllOrderItems, addOrderItem, deleteOrderItem, updateOrderItem } from "../services/orderItem.service";
-export const getOrdersItems = async (req, res) => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.updateOrdersItems = exports.deleteOrdersItems = exports.createOrderItem = exports.getOrdersItems = void 0;
+const orderItem_service_1 = require("../services/orderItem.service");
+const getOrdersItems = async (req, res) => {
     try {
-        const orderItems = await getAllOrderItems();
+        const orderItems = await (0, orderItem_service_1.getAllOrderItems)();
         res.json(orderItems);
     }
     catch (error) {
         res.status(500).json({ error: "Erro ao buscar itens do pedido" });
     }
 };
-export const createOrderItem = async (req, res) => {
+exports.getOrdersItems = getOrdersItems;
+const createOrderItem = async (req, res) => {
     const { orderId, quantity, price, foodId, name, subtotal } = req.body;
     try {
-        const orderItem = await addOrderItem({
+        const orderItem = await (0, orderItem_service_1.addOrderItem)({
             orderId,
             quantity,
             price,
@@ -25,20 +29,22 @@ export const createOrderItem = async (req, res) => {
         res.status(400).json({ error: "Erro ao criar item do pedido" });
     }
 };
-export const deleteOrdersItems = async (req, res) => {
+exports.createOrderItem = createOrderItem;
+const deleteOrdersItems = async (req, res) => {
     const { id } = req.body;
     try {
-        const orderItem = await deleteOrderItem(id);
+        const orderItem = await (0, orderItem_service_1.deleteOrderItem)(id);
         res.status(200).json(orderItem);
     }
     catch (error) {
         res.status(400).json({ error: "Erro ao deletar item do pedido" });
     }
 };
-export const updateOrdersItems = async (req, res) => {
+exports.deleteOrdersItems = deleteOrdersItems;
+const updateOrdersItems = async (req, res) => {
     const { id, orderId, foodId, name, price, quantity, subtotal } = req.body;
     try {
-        const orderItem = await updateOrderItem({
+        const orderItem = await (0, orderItem_service_1.updateOrderItem)({
             id,
             orderId,
             foodId,
@@ -53,4 +59,5 @@ export const updateOrdersItems = async (req, res) => {
         res.status(400).json({ error: "Erro ao atualizar item do pedido" });
     }
 };
+exports.updateOrdersItems = updateOrdersItems;
 //# sourceMappingURL=orderItem.controller.js.map

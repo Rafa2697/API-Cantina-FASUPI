@@ -1,4 +1,6 @@
-import { getFoods, createFood } from '../controllers/food.controller';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const food_controller_1 = require("../controllers/food.controller");
 describe("Teste para food.controller", () => {
     test("testar função getFoods", async () => {
         const req = {
@@ -9,7 +11,7 @@ describe("Teste para food.controller", () => {
             json: jest.fn(),
             status: jest.fn().mockReturnThis()
         };
-        await getFoods(req, res);
+        await (0, food_controller_1.getFoods)(req, res);
         expect(res.json).toHaveBeenCalled();
     });
     test("testar função createFood", async () => {
@@ -21,7 +23,7 @@ describe("Teste para food.controller", () => {
             json: jest.fn(),
             status: jest.fn().mockReturnThis()
         };
-        await createFood(req, res);
+        await (0, food_controller_1.createFood)(req, res);
         expect(res.json).toHaveBeenCalled();
     });
 });

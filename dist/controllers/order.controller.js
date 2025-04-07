@@ -1,41 +1,48 @@
-import { getAllOrders, addOrders, updateOrder, deleteOrder } from "../services/orders.service";
-export const getOrders = async (req, res) => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.deleteOrders = exports.updateOrders = exports.createOrder = exports.getOrders = void 0;
+const orders_service_1 = require("../services/orders.service");
+const getOrders = async (req, res) => {
     try {
-        const orders = await getAllOrders();
+        const orders = await (0, orders_service_1.getAllOrders)();
         res.json(orders);
     }
     catch (error) {
         res.status(500).json({ error: "Erro ao buscar pedidos" });
     }
 };
-export const createOrder = async (req, res) => {
+exports.getOrders = getOrders;
+const createOrder = async (req, res) => {
     const { items, userEmail, userName } = req.body;
     try {
-        const user = await addOrders({ items, userEmail, userName });
+        const user = await (0, orders_service_1.addOrders)({ items, userEmail, userName });
         res.status(201).json(user);
     }
     catch (error) {
         res.status(400).json({ error: "Erro ao criar pedido" });
     }
 };
-export const updateOrders = async (req, res) => {
+exports.createOrder = createOrder;
+const updateOrders = async (req, res) => {
     const { id, status } = req.body;
     try {
-        const order = await updateOrder(id, status);
+        const order = await (0, orders_service_1.updateOrder)(id, status);
         res.status(200).json(order);
     }
     catch (error) {
         res.status(400).json({ error: "Erro ao atualizar pedido" });
     }
 };
-export const deleteOrders = async (req, res) => {
+exports.updateOrders = updateOrders;
+const deleteOrders = async (req, res) => {
     const { id } = req.body;
     try {
-        const order = await deleteOrder(id);
+        const order = await (0, orders_service_1.deleteOrder)(id);
         res.status(200).json(order);
     }
     catch (error) {
         res.status(400).json({ error: "Erro ao deletar pedido" });
     }
 };
+exports.deleteOrders = deleteOrders;
 //# sourceMappingURL=order.controller.js.map

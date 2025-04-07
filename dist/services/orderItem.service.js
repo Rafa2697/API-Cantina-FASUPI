@@ -1,9 +1,13 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
-export const getAllOrderItems = async () => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.updateOrderItem = exports.deleteOrderItem = exports.addOrderItem = exports.getAllOrderItems = void 0;
+const client_1 = require("@prisma/client");
+const prisma = new client_1.PrismaClient();
+const getAllOrderItems = async () => {
     return await prisma.orderItem.findMany();
 };
-export const addOrderItem = async ({ orderId, quantity, price, foodId, name, subtotal }) => {
+exports.getAllOrderItems = getAllOrderItems;
+const addOrderItem = async ({ orderId, quantity, price, foodId, name, subtotal }) => {
     try {
         return await prisma.orderItem.create({
             data: {
@@ -20,7 +24,8 @@ export const addOrderItem = async ({ orderId, quantity, price, foodId, name, sub
         console.error(error);
     }
 };
-export const deleteOrderItem = async (id) => {
+exports.addOrderItem = addOrderItem;
+const deleteOrderItem = async (id) => {
     try {
         return await prisma.orderItem.delete({
             where: {
@@ -32,7 +37,8 @@ export const deleteOrderItem = async (id) => {
         console.error(error);
     }
 };
-export const updateOrderItem = async ({ id, orderId, foodId, name, price, quantity, subtotal }) => {
+exports.deleteOrderItem = deleteOrderItem;
+const updateOrderItem = async ({ id, orderId, foodId, name, price, quantity, subtotal }) => {
     try {
         return await prisma.orderItem.update({
             where: {
@@ -52,4 +58,5 @@ export const updateOrderItem = async ({ id, orderId, foodId, name, price, quanti
         console.error(error);
     }
 };
+exports.updateOrderItem = updateOrderItem;
 //# sourceMappingURL=orderItem.service.js.map

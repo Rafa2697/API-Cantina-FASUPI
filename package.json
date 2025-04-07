@@ -1,11 +1,11 @@
 {
   "name": "api-cantina-fasupi",
   "version": "1.0.0",
-  "type": "module",
-  "main": "server.ts",
+  "type": "commonjs",
+  "main": "index.ts",
   "scripts": {
-    "start": "node dist/server.js",
-    "dev": "tsx src/server.ts",
+    "start": "node dist/api/index.ts",
+    "dev": "tsx src/api/index.ts",
     "build": "tsc && prisma generate",
     "test": "jest --passWithNoTests"
   },

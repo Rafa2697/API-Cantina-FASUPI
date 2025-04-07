@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
     /* Configurações básicas atualizadas para ESM */
-    "target": "ES2022",
-    "module": "ESNext",        // Alterado para ESNext para suportar ES Modules
+    "target": "ESNext",
+    "module": "CommonJS", // Alterado de ESNext para CommonJS
+    "esModuleInterop": true, // Permite interoperabilidade entre CommonJS e ESM
     "moduleResolution": "node", // Importante para resolução de módulos
     "lib": ["ES2022"],
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "outDir": "dist",
+    "rootDir": "src",
 
     /* Configurações importantes para ES Modules */
     "allowImportingTsExtensions": false,

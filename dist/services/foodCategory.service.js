@@ -1,6 +1,10 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
-export async function getAllCategories() {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getAllCategories = getAllCategories;
+exports.addCategory = addCategory;
+const client_1 = require("@prisma/client");
+const prisma = new client_1.PrismaClient();
+async function getAllCategories() {
     try {
         return await prisma.category.findMany();
     }
@@ -8,7 +12,7 @@ export async function getAllCategories() {
         console.error(error);
     }
 }
-export async function addCategory(name) {
+async function addCategory(name) {
     try {
         return await prisma.category.create({
             data: {

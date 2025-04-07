@@ -1,9 +1,13 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
-export const getAllOrders = async () => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.deleteOrder = exports.updateOrder = exports.addOrders = exports.getAllOrders = void 0;
+const client_1 = require("@prisma/client");
+const prisma = new client_1.PrismaClient();
+const getAllOrders = async () => {
     return await prisma.order.findMany();
 };
-export const addOrders = async ({ items, userEmail, userName }) => {
+exports.getAllOrders = getAllOrders;
+const addOrders = async ({ items, userEmail, userName }) => {
     try {
         const totalPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
         return await prisma.order.create({
@@ -30,7 +34,8 @@ export const addOrders = async ({ items, userEmail, userName }) => {
         throw error;
     }
 };
-export const updateOrder = async (id, status) => {
+exports.addOrders = addOrders;
+const updateOrder = async (id, status) => {
     try {
         return await prisma.order.update({
             where: {
@@ -45,7 +50,8 @@ export const updateOrder = async (id, status) => {
         console.error(error);
     }
 };
-export const deleteOrder = async (id) => {
+exports.updateOrder = updateOrder;
+const deleteOrder = async (id) => {
     try {
         return await prisma.order.delete({
             where: {
@@ -57,4 +63,5 @@ export const deleteOrder = async (id) => {
         console.error(error);
     }
 };
+exports.deleteOrder = deleteOrder;
 //# sourceMappingURL=orders.service.js.map
