@@ -4,7 +4,7 @@
   "type": "commonjs",
   "main": "index.ts",
   "scripts": {
-    "start": "node dist/api/index.ts",
+    "start": "node dist/api/index.js",
     "dev": "tsx src/api/index.ts",
     "build": "tsc && prisma generate",
     "test": "jest --passWithNoTests"
