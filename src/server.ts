@@ -8,7 +8,7 @@ import routerOrderItem from './routes/orderItem.routes';
 import rootRouter from './routes/root.routes';
 
 const app = express();
-const PORT =  process.env.PORT || 3000; // Define a porta do servidor, padrão 3000
+// const PORT =  process.env.PORT || 3000; // Define a porta do servidor, padrão 3000
 
 dotenv.config(); // Carrega as variáveis de ambiente do .env
 
