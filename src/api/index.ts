@@ -8,7 +8,7 @@ import routerOrderItem from '../routes/orderItem.routes';
 import rootRouter from '../routes/root.routes';
 
 const app = express();
-// const PORT =  process.env.PORT || 3000; // Define a porta do servidor, padrão 3000
+const PORT =  process.env.PORT || 3000; // Define a porta do servidor, padrão 3000
 
 dotenv.config(); // Carrega as variáveis de ambiente do .env
 
@@ -20,9 +20,9 @@ app.use(routeCategory); // Usando as rotas definidas no arquivo category.routes.
 app.use(routerOrder); // Usando as rotas definidas no arquivo order.routes.ts
 app.use(routerOrderItem); // Usando as rotas definidas no arquivo orderItem.routes.ts
 
-// app.listen(PORT, () => {
-//     console.log(`servidor rodando na porta ${PORT}`);
-// })
+app.listen(PORT, () => {
+    console.log(`servidor rodando na porta ${PORT}`);
+})
 app.get('/test', (req, res) => {
     res.send('Teste funcionando!');
   });
