@@ -11,3 +11,9 @@ export const addUser = async (name: string, email: string, password: string, ima
     data: { name, email, password, image  },
   });
 };
+
+export const getUserByEmail = async (email: string) => {
+  return await prisma.admin.findUnique({
+    where: { email },
+  });
+};
