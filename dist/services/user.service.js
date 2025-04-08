@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addUser = exports.getAllUsers = void 0;
+exports.getUserByEmail = exports.addUser = exports.getAllUsers = void 0;
 const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 const getAllUsers = async () => {
@@ -13,4 +13,10 @@ const addUser = async (name, email, password, image) => {
     });
 };
 exports.addUser = addUser;
+const getUserByEmail = async (email) => {
+    return await prisma.admin.findUnique({
+        where: { email },
+    });
+};
+exports.getUserByEmail = getUserByEmail;
 //# sourceMappingURL=user.service.js.map

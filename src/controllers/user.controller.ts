@@ -20,7 +20,7 @@ export const createUser = async (req: Request, res: Response) => {
   }
 };
 
-export const loginAdmin = async (req: Request, res: Response) => {
+export const loginAdmin = async (req: Request, res: Response): Promise<void> => {
   const { email } = req.body;
 
   try {
@@ -28,7 +28,8 @@ export const loginAdmin = async (req: Request, res: Response) => {
       const admin = await getUserByEmail(email);
       
       if (!admin) {
-          return res.status(401).json({ error: "Email ou senha inválidos" });
+          res.status(401).json({ error: "Email ou senha inválidos" });
+          return 
       }
 
 
@@ -40,7 +41,6 @@ export const loginAdmin = async (req: Request, res: Response) => {
           image: admin.image,
       });
   } catch (error) {
-      console.error("Erro no login:", error);
       res.status(500).json({ error: "Erro interno no servidor" });
   }
 };
