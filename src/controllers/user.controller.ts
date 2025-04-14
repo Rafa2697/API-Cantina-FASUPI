@@ -37,6 +37,10 @@ export const loginAdmin = async (req: Request, res: Response): Promise<void> => 
           return 
       }
 
+      if (!admin.password) {
+        res.status(401).json({ error: "Email ou senha inválidos" });
+        return;
+      }
       const passwordMatch = await bcrypt.compare(password, admin.password);
 
       if (!passwordMatch) {
