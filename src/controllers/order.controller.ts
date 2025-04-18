@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { getAllOrders, addOrders, updateOrder, deleteOrder } from "../services/orders.service";
+import { stat } from "fs";
 
 export const getOrders = async (req: Request, res: Response) => {
     try {
@@ -11,13 +12,13 @@ export const getOrders = async (req: Request, res: Response) => {
 }
 
 export const createOrder = async (req: Request, res: Response) => {
-    const {items, userEmail, userName} = req.body;
+    const { items, userEmail, userName } = req.body;
     try {
         const user = await addOrders({ items, userEmail, userName });
         res.status(201).json(user);
     } catch (error) {
         res.status(400).json({ error: "Erro ao criar pedido" });
-        
+
     }
 }
 
@@ -32,10 +33,16 @@ export const updateOrders = async (req: Request, res: Response) => {
 }
 
 export const deleteOrders = async (req: Request, res: Response) => {
-    const {id} = req.body;
+    const { status } = req.body;
     try {
-        const order = await deleteOrder(id);
-        res.status(200).json(order);
+        if (status === "Concluído") {
+            const order = await deleteOrder(status);
+            res.status(200).json(order);
+        }
+        else{
+            res.status(302).json("Não tem pedidos concluídos")
+        }
+
     } catch (error) {
         res.status(400).json({ error: "Erro ao deletar pedido" });
     }
