@@ -35,18 +35,22 @@ const updateOrders = async (req, res) => {
 };
 exports.updateOrders = updateOrders;
 const deleteOrders = async (req, res) => {
-    const { status } = req.body;
+    const { id, deleteMany } = req.body;
     try {
-        if (status === "Concluído") {
-            const order = await (0, orders_service_1.deleteOrder)(status);
-            res.status(200).json(order);
+        const result = await (0, orders_service_1.deleteOrder)(id, deleteMany);
+        if (deleteMany) {
+            return res.status(200).json({
+                message: "Pedidos concluídos deletados com sucesso",
+                data: result
+            });
         }
-        else {
-            res.status(302).json("Não tem pedidos concluídos");
-        }
+        res.status(200).json({
+            message: "Pedido deletado com sucesso",
+            data: result
+        });
     }
     catch (error) {
-        res.status(400).json({ error: "Erro ao deletar pedido" });
+        res.status(500).json({ error: "Erro ao deletar pedido(s)" });
     }
 };
 exports.deleteOrders = deleteOrders;

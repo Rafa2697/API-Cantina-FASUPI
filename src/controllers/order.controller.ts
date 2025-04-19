@@ -33,17 +33,22 @@ export const updateOrders = async (req: Request, res: Response) => {
 }
 
 export const deleteOrders = async (req: Request, res: Response) => {
-    const { status } = req.body;
+    const { id, deleteMany } = req.body;
     try {
-        if (status === "Concluído") {
-            const order = await deleteOrder(status);
-            res.status(200).json(order);
-        }
-        else{
-            res.status(302).json("Não tem pedidos concluídos")
+        const result = await deleteOrder(id, deleteMany);
+        
+        if (deleteMany) {
+            return res.status(200).json({ 
+                message: "Pedidos concluídos deletados com sucesso", 
+                data: result 
+            });
         }
 
+        res.status(200).json({ 
+            message: "Pedido deletado com sucesso", 
+            data: result 
+        });
     } catch (error) {
-        res.status(400).json({ error: "Erro ao deletar pedido" });
+        res.status(500).json({ error: "Erro ao deletar pedido(s)" });
     }
 }

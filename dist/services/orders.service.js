@@ -51,16 +51,24 @@ const updateOrder = async (id, status) => {
     }
 };
 exports.updateOrder = updateOrder;
-const deleteOrder = async (id) => {
+const deleteOrder = async (id, deleteMany = false) => {
     try {
-        return await prisma.order.deleteMany({
+        if (deleteMany) {
+            return await prisma.order.deleteMany({
+                where: {
+                    status: "Concluído"
+                }
+            });
+        }
+        return await prisma.order.delete({
             where: {
-                status: "Concluído"
+                id: id
             }
         });
     }
     catch (error) {
         console.error(error);
+        throw error;
     }
 };
 exports.deleteOrder = deleteOrder;
